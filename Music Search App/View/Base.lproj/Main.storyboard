@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Chu-f8-gpH">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vVg-V9-XpJ" kind="relationship" relationship="rootViewController" id="1v0-Rr-E2J"/>
+                        <segue destination="vVg-V9-XpJ" kind="relationship" relationship="rootViewController" id="Kty-AD-BRQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJK-Dg-mO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762" y="98"/>
+            <point key="canvasLocation" x="-803" y="98"/>
         </scene>
         <!--Music Search-->
         <scene sceneID="VPc-Fe-3PT">
             <objects>
-                <viewController id="vVg-V9-XpJ" customClass="ViewController" customModule="Music_Search" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vVg-V9-XpJ" customClass="MusicTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yG7-Ci-v1q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="musicTableViewCell" rowHeight="105" id="cJp-em-ImV" customClass="MusicTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="musicTableViewCell" rowHeight="105" id="cJp-em-ImV">
                                         <rect key="frame" x="0.0" y="28" width="414" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJp-em-ImV" id="3uL-Px-L4d">
@@ -99,15 +100,12 @@
                                                 <constraint firstItem="L7T-hs-tiz" firstAttribute="trailing" secondItem="3uL-Px-L4d" secondAttribute="trailingMargin" id="t4z-mx-Hl1"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="albumNameLbl" destination="ob3-eQ-aFQ" id="3rD-mQ-gWv"/>
-                                            <outlet property="artistNameLbl" destination="5bc-L4-z0i" id="JWO-iF-q4c"/>
-                                            <outlet property="playPauseBtn" destination="TeQ-W3-0cz" id="bbV-at-hYL"/>
-                                            <outlet property="trackImageView" destination="uku-nA-ECr" id="L31-Ol-gdS"/>
-                                            <outlet property="trackNameLbl" destination="L7T-hs-tiz" id="7hV-Tr-fm8"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vVg-V9-XpJ" id="QSs-Mg-CVQ"/>
+                                    <outlet property="delegate" destination="vVg-V9-XpJ" id="akp-6Z-rgj"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c95-Ue-GOf">
                                 <rect key="frame" x="356" y="101" width="48" height="30"/>
@@ -132,6 +130,9 @@
                         <viewLayoutGuide key="safeArea" id="ZTl-mi-g8f"/>
                     </view>
                     <navigationItem key="navigationItem" title="Music Search" id="sAn-md-z67"/>
+                    <connections>
+                        <outlet property="musicTableView" destination="Udd-iE-2Ih" id="qWZ-2H-CQx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QzK-tm-Y33" sceneMemberID="firstResponder"/>
             </objects>

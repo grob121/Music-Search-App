@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F587EBDD22BC8FDB00957C7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587EBDC22BC8FDB00957C7E /* AppDelegate.swift */; };
-		F587EBDF22BC8FDB00957C7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587EBDE22BC8FDB00957C7E /* ViewController.swift */; };
 		F587EBE222BC8FDB00957C7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F587EBE022BC8FDB00957C7E /* Main.storyboard */; };
 		F587EBE422BC8FDC00957C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F587EBE322BC8FDC00957C7E /* Assets.xcassets */; };
 		F587EBE722BC8FDC00957C7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F587EBE522BC8FDC00957C7E /* LaunchScreen.storyboard */; };
@@ -17,7 +16,6 @@
 /* Begin PBXFileReference section */
 		F587EBD922BC8FDB00957C7E /* Music Search App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Search App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F587EBDC22BC8FDB00957C7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F587EBDE22BC8FDB00957C7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F587EBE122BC8FDB00957C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F587EBE322BC8FDC00957C7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F587EBE622BC8FDC00957C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +52,37 @@
 		F587EBDB22BC8FDB00957C7E /* Music Search App */ = {
 			isa = PBXGroup;
 			children = (
+				F587EBF022BC940600957C7E /* ViewModel */,
+				F587EBEF22BC93F900957C7E /* Model */,
+				F587EBEE22BC93EB00957C7E /* View */,
 				F587EBDC22BC8FDB00957C7E /* AppDelegate.swift */,
-				F587EBDE22BC8FDB00957C7E /* ViewController.swift */,
-				F587EBE022BC8FDB00957C7E /* Main.storyboard */,
 				F587EBE322BC8FDC00957C7E /* Assets.xcassets */,
 				F587EBE522BC8FDC00957C7E /* LaunchScreen.storyboard */,
 				F587EBE822BC8FDC00957C7E /* Info.plist */,
 			);
 			path = "Music Search App";
+			sourceTree = "<group>";
+		};
+		F587EBEE22BC93EB00957C7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F587EBE022BC8FDB00957C7E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F587EBEF22BC93F900957C7E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F587EBF022BC940600957C7E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +156,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F587EBDF22BC8FDB00957C7E /* ViewController.swift in Sources */,
 				F587EBDD22BC8FDB00957C7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
