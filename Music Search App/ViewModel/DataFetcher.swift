@@ -10,7 +10,6 @@ import Foundation
 
 class DataFetcher {
     func fetchItems(matching query: [String: String], completion: @escaping ([Track]?) -> Void) {
-        
         let baseURL = URL(string: "https://itunes.apple.com/search?")!
         
         guard let url = baseURL.withQueries(query) else {
@@ -36,7 +35,6 @@ class DataFetcher {
 
 extension URL {
     func withQueries(_ queries: [String: String]) -> URL? {
-        
         var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
         components?.queryItems = queries.compactMap { URLQueryItem(name: $0.0, value: $0.1)}
         return components?.url

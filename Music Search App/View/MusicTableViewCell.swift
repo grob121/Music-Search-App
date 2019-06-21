@@ -16,5 +16,6 @@ class MusicTableViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLbl: UILabel!
     @IBOutlet weak var albumNameLbl: UILabel!
     @IBOutlet weak var playPauseBtn: UIButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
 }

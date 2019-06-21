@@ -52,6 +52,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="104.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fxu-yr-tCm">
+                                                    <rect key="frame" x="43" y="42.5" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uku-nA-ECr">
                                                     <rect key="frame" x="20" y="20" width="65" height="65"/>
                                                     <constraints>
@@ -86,6 +89,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fxu-yr-tCm" firstAttribute="centerX" secondItem="3uL-Px-L4d" secondAttribute="centerX" constant="-154" id="4HJ-Ru-Ghf"/>
                                                 <constraint firstItem="L7T-hs-tiz" firstAttribute="trailing" secondItem="5bc-L4-z0i" secondAttribute="trailing" id="5Oe-UO-736"/>
                                                 <constraint firstItem="ob3-eQ-aFQ" firstAttribute="top" secondItem="5bc-L4-z0i" secondAttribute="bottom" constant="10" id="6kn-RX-b8f"/>
                                                 <constraint firstItem="L7T-hs-tiz" firstAttribute="top" secondItem="3uL-Px-L4d" secondAttribute="topMargin" id="BT4-0j-eJb"/>
@@ -96,6 +100,7 @@
                                                 <constraint firstItem="uku-nA-ECr" firstAttribute="centerY" secondItem="3uL-Px-L4d" secondAttribute="centerY" id="TXi-RI-AIN"/>
                                                 <constraint firstItem="5bc-L4-z0i" firstAttribute="centerY" secondItem="3uL-Px-L4d" secondAttribute="centerY" id="Vw3-wG-UiQ"/>
                                                 <constraint firstItem="L7T-hs-tiz" firstAttribute="leading" secondItem="5bc-L4-z0i" secondAttribute="leading" id="Xza-P6-UBx"/>
+                                                <constraint firstItem="fxu-yr-tCm" firstAttribute="centerY" secondItem="3uL-Px-L4d" secondAttribute="centerY" id="cjC-tM-tyL"/>
                                                 <constraint firstItem="L7T-hs-tiz" firstAttribute="leading" secondItem="uku-nA-ECr" secondAttribute="trailing" constant="8" symbolic="YES" id="jwr-Lh-aGD"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ob3-eQ-aFQ" secondAttribute="bottom" constant="2.5" id="nPt-Kf-WIm"/>
                                                 <constraint firstItem="uku-nA-ECr" firstAttribute="leading" secondItem="3uL-Px-L4d" secondAttribute="leadingMargin" id="pWA-eM-5GM"/>
@@ -106,6 +111,7 @@
                                         <connections>
                                             <outlet property="albumNameLbl" destination="ob3-eQ-aFQ" id="yQa-tb-Yya"/>
                                             <outlet property="artistNameLbl" destination="5bc-L4-z0i" id="E4W-AU-6Ks"/>
+                                            <outlet property="loadingIndicator" destination="fxu-yr-tCm" id="fPV-h8-xY9"/>
                                             <outlet property="playPauseBtn" destination="TeQ-W3-0cz" id="HiR-fD-rgy"/>
                                             <outlet property="trackImageView" destination="uku-nA-ECr" id="x5f-F3-ihM"/>
                                             <outlet property="trackNameLbl" destination="L7T-hs-tiz" id="eV8-7n-AYN"/>
@@ -124,6 +130,9 @@
                                     <action selector="searchMusic:" destination="vVg-V9-XpJ" eventType="touchUpInside" id="R3Q-yU-JIv"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6NU-op-OzK">
+                                <rect key="frame" x="197" y="558" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -131,7 +140,9 @@
                             <constraint firstItem="Udd-iE-2Ih" firstAttribute="trailing" secondItem="ZTl-mi-g8f" secondAttribute="trailing" id="C6g-SH-z6q"/>
                             <constraint firstItem="Udd-iE-2Ih" firstAttribute="bottom" secondItem="ZTl-mi-g8f" secondAttribute="bottom" id="CIh-ok-ywM"/>
                             <constraint firstItem="c95-Ue-GOf" firstAttribute="leading" secondItem="0U6-33-fcb" secondAttribute="trailing" id="CXP-UX-KHd"/>
+                            <constraint firstItem="6NU-op-OzK" firstAttribute="centerX" secondItem="yG7-Ci-v1q" secondAttribute="centerX" id="Hcp-zG-DPB"/>
                             <constraint firstItem="0U6-33-fcb" firstAttribute="centerY" secondItem="c95-Ue-GOf" secondAttribute="centerY" id="I1d-27-a8M"/>
+                            <constraint firstItem="6NU-op-OzK" firstAttribute="centerY" secondItem="yG7-Ci-v1q" secondAttribute="centerY" constant="120" id="IG4-Fw-MGd"/>
                             <constraint firstItem="c95-Ue-GOf" firstAttribute="trailing" secondItem="Udd-iE-2Ih" secondAttribute="trailing" constant="-10" id="JeY-Pf-Ng6"/>
                             <constraint firstItem="0U6-33-fcb" firstAttribute="top" secondItem="ZTl-mi-g8f" secondAttribute="top" id="TTe-Ob-cNT"/>
                             <constraint firstItem="0U6-33-fcb" firstAttribute="leading" secondItem="ZTl-mi-g8f" secondAttribute="leading" id="bYF-Ua-0wH"/>
@@ -144,6 +155,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Music Search" id="sAn-md-z67"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="6NU-op-OzK" id="OKZ-46-iUc"/>
                         <outlet property="musicSearchBar" destination="0U6-33-fcb" id="LIT-z3-eFr"/>
                         <outlet property="musicTableView" destination="Udd-iE-2Ih" id="7b3-g6-gWw"/>
                     </connections>

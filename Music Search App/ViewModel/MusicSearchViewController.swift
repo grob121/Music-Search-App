@@ -15,6 +15,9 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var musicSearchBar: UISearchBar!
     @IBOutlet weak var musicTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var refreshControl = UIRefreshControl()
     
     let datafetcher = DataFetcher()
     var tracks = [Track]()
@@ -23,9 +26,16 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action:
+            #selector(MusicSearchViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        activityIndicator.isHidden = true
+        
         musicTableView.isHidden = true
         musicTableView.rowHeight = UITableView.automaticDimension
         musicTableView.estimatedRowHeight = 120.0
+        musicTableView.addSubview(refreshControl)
     }
     
     // MARK: - Table View Delegate and Data Source
@@ -41,7 +51,8 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
         cell.trackNameLbl.text = track.trackName
         cell.artistNameLbl.text = track.artistName
         cell.albumNameLbl.text = track.albumName
-        cell.playPauseBtn.imageView?.image = UIImage(named: "play-icon")
+        cell.loadingIndicator.startAnimating()
+        cell.playPauseBtn.imageView?.isHidden = true
         
         let task = URLSession.shared.dataTask(with: track.trackImageURL, completionHandler: { (data, response, error) in
             guard let data = data,
@@ -49,7 +60,9 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
                     return
             }
             DispatchQueue.main.async {
+                cell.loadingIndicator.stopAnimating()
                 cell.trackImageView.image = image
+                cell.playPauseBtn.imageView?.isHidden = false
             }
         })
         task.resume()
@@ -93,16 +106,20 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
             "entity":"song",
         ]
         
-        datafetcher.fetchItems(matching: queries) { (track) in
-            guard let track = track else {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        datafetcher.fetchItems(matching: queries) { (tracks) in
+            guard let tracks = tracks else {
                 return
             }
-            self.updateUI(with: track)
+            self.updateUI(with: tracks)
         }
     }
     
     func updateUI(with tracks: [Track]) {
         DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
             if(tracks.count == 0) {
                 self.musicTableView.isHidden = true
             } else {
@@ -111,6 +128,11 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
                 self.musicTableView.reloadData()
             }
         }
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchItems(with: musicSearchBar.text!)
+        refreshControl.endRefreshing()
     }
 }
 
