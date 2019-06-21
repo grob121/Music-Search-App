@@ -29,20 +29,23 @@
         <!--Music Search-->
         <scene sceneID="VPc-Fe-3PT">
             <objects>
-                <viewController id="vVg-V9-XpJ" customClass="MusicTableViewController" sceneMemberID="viewController">
+                <viewController id="vVg-V9-XpJ" customClass="MusicSearchViewController" customModule="Music_Search_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yG7-Ci-v1q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Type Song" translatesAutoresizingMaskIntoConstraints="NO" id="0U6-33-fcb">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Type here" translatesAutoresizingMaskIntoConstraints="NO" id="0U6-33-fcb">
                                 <rect key="frame" x="0.0" y="88" width="356" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vVg-V9-XpJ" id="GlF-th-hYu"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Udd-iE-2Ih">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="musicTableViewCell" rowHeight="105" id="cJp-em-ImV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="musicTableViewCell" rowHeight="105" id="cJp-em-ImV" customClass="MusicTableViewCell" customModule="Music_Search_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJp-em-ImV" id="3uL-Px-L4d">
@@ -100,16 +103,26 @@
                                                 <constraint firstItem="L7T-hs-tiz" firstAttribute="trailing" secondItem="3uL-Px-L4d" secondAttribute="trailingMargin" id="t4z-mx-Hl1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumNameLbl" destination="ob3-eQ-aFQ" id="yQa-tb-Yya"/>
+                                            <outlet property="artistNameLbl" destination="5bc-L4-z0i" id="E4W-AU-6Ks"/>
+                                            <outlet property="playPauseBtn" destination="TeQ-W3-0cz" id="HiR-fD-rgy"/>
+                                            <outlet property="trackImageView" destination="uku-nA-ECr" id="x5f-F3-ihM"/>
+                                            <outlet property="trackNameLbl" destination="L7T-hs-tiz" id="eV8-7n-AYN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="vVg-V9-XpJ" id="QSs-Mg-CVQ"/>
-                                    <outlet property="delegate" destination="vVg-V9-XpJ" id="akp-6Z-rgj"/>
+                                    <outlet property="dataSource" destination="vVg-V9-XpJ" id="sHE-Z0-sWh"/>
+                                    <outlet property="delegate" destination="vVg-V9-XpJ" id="TS3-V5-Dbx"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c95-Ue-GOf">
                                 <rect key="frame" x="356" y="101" width="48" height="30"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchMusic:" destination="vVg-V9-XpJ" eventType="touchUpInside" id="R3Q-yU-JIv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -131,7 +144,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Music Search" id="sAn-md-z67"/>
                     <connections>
-                        <outlet property="musicTableView" destination="Udd-iE-2Ih" id="qWZ-2H-CQx"/>
+                        <outlet property="musicSearchBar" destination="0U6-33-fcb" id="LIT-z3-eFr"/>
+                        <outlet property="musicTableView" destination="Udd-iE-2Ih" id="7b3-g6-gWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QzK-tm-Y33" sceneMemberID="firstResponder"/>
