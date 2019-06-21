@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import AVFoundation
 
 class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -16,11 +17,12 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var musicSearchBar: UISearchBar!
     @IBOutlet weak var musicTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     var refreshControl = UIRefreshControl()
     
     let datafetcher = DataFetcher()
     var tracks = [Track]()
+    var player: AVPlayer?
+    var previousSelectedPath: IndexPath?
     
     // MARK: - View Setup
     
@@ -70,11 +72,39 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        musicSearchBar.endEditing(true)
+        let indexPath = tableView.indexPathForSelectedRow
+        let currentCell = tableView.cellForRow(at: indexPath!) as! MusicTableViewCell
+        
+        if(currentCell.isSelected) {
+            if(player !=  nil && previousSelectedPath == indexPath){
+                if(player!.isPlaying){
+                    player!.pause()
+                    currentCell.playPauseBtn.setImage(UIImage(named: "play-icon"), for: .normal)
+                } else {
+                    player?.play()
+                    currentCell.playPauseBtn.setImage(UIImage(named: "pause-icon"), for: .normal)
+                }
+            } else {
+                if(previousSelectedPath != nil) {
+                    let previousCell = tableView.cellForRow(at: previousSelectedPath!) as! MusicTableViewCell
+                    previousCell.playPauseBtn.setImage(UIImage(named: "play-icon"), for: .normal)
+                }
+                let playerItem = AVPlayerItem(url:tracks[indexPath!.row].trackURL)
+                player = AVPlayer(playerItem:playerItem)
+                player!.rate = 1.0
+                player!.play()
+                currentCell.playPauseBtn.setImage(UIImage(named: "pause-icon"), for: .normal)
+            }
+            previousSelectedPath = indexPath!
+        }
+    }
+    
     // MARK: - Search Bar Delegate
     
     @IBAction func searchMusic(_ sender: Any) {
         musicSearchBar.endEditing(true)
-        
         guard let searchText = musicSearchBar.text else {
             return
         }
@@ -90,7 +120,6 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         musicSearchBar.endEditing(true)
-        
         guard let searchText = searchBar.text else {
             return
         }
@@ -120,6 +149,7 @@ class MusicSearchViewController: UIViewController, UITableViewDelegate, UITableV
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
+            
             if(tracks.count == 0) {
                 self.musicTableView.isHidden = true
             } else {

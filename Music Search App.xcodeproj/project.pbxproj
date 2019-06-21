@@ -16,6 +16,7 @@
 		F587EC0022BC9D4200957C7E /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587EBFF22BC9D4200957C7E /* Tracks.swift */; };
 		F587EC0222BC9DC700957C7E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587EC0122BC9DC700957C7E /* DataFetcher.swift */; };
 		F587EC0A22BCA5A600957C7E /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587EC0922BCA5A600957C7E /* MusicSearchViewController.swift */; };
+		F587EC1422BCE2F800957C7E /* AVPlayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587EC1322BCE2F800957C7E /* AVPlayerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F587EBFF22BC9D4200957C7E /* Tracks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; };
 		F587EC0122BC9DC700957C7E /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		F587EC0922BCA5A600957C7E /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
+		F587EC1322BCE2F800957C7E /* AVPlayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				F587EC0122BC9DC700957C7E /* DataFetcher.swift */,
 				F587EC0922BCA5A600957C7E /* MusicSearchViewController.swift */,
+				F587EC1322BCE2F800957C7E /* AVPlayerExtension.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				F587EC0222BC9DC700957C7E /* DataFetcher.swift in Sources */,
 				F587EBFE22BC9C7900957C7E /* Track.swift in Sources */,
 				F587EBF822BC9A8500957C7E /* MusicTableViewCell.swift in Sources */,
+				F587EC1422BCE2F800957C7E /* AVPlayerExtension.swift in Sources */,
 				F587EC0A22BCA5A600957C7E /* MusicSearchViewController.swift in Sources */,
 				F587EC0022BC9D4200957C7E /* Tracks.swift in Sources */,
 			);
